@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">NickNote</string>
+    <string name="setting_sender_username">Gmail Username</string>
+    <string name="setting_sender_password">Gmail Password</string>
+    <string name="setting_recipients">Recipient(s)</string>
+    <string name="setting_sender_username_hint">user@gmail.com</string>
+    <string name="setting_sender_password_hint">password</string>
+    <string name="setting_recipients_hint">user1@mail.com,user2@mail.com&#8230;</string>
+    <string name="setting_button_save">Save</string>
+    <string name="setting_button_test">Send Test Email</string>
+    <string name="test_email_subject">Test email</string>
+    <string name="test_email_body">This email was generated and sent programatically!</string>
+    <string name="setting_error_fields">You must fill out all fields!</string>
+    <string name="schedule_error_start_after_end">Scheduled end must be after scheduled start!</string>
+    <string name="sms_notification_subject">New SMS received</string>
+    <string name="sms_notification_body">At %1$s, you received an SMS message from %2$s with the following text:\n\n%3$s</string>
+    <string name="phone_call_notification_subject">New phone call</string>
+    <string name="phone_call_notification_body">At %1$s, you received an incoming phone call from %2$s.</string>
+    <string name="schedule_header">Schedule</string>
+    <string name="schedule_from">From</string>
+    <string name="schedule_to">to</string>
+    <string name="schedule_sun">SUN</string>
+    <string name="schedule_mon">MON</string>
+    <string name="schedule_tue">TUE</string>
+    <string name="schedule_wed">WED</string>
+    <string name="schedule_thu">THU</string>
+    <string name="schedule_fri">FRI</string>
+    <string name="schedule_sat">SAT</string>
+
+</resources>

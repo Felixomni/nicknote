@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp" >
+
+    <TextView
+        android:id="@+id/textview_schedule_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="@string/schedule_header"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:id="@+id/scheduleview_start_end_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textview_schedule_header"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/schedule_from"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/edittext_schedule_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:inputType="none"
+            android:gravity="center_horizontal"
+            android:minWidth="50dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/schedule_to"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/edittext_schedule_end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:inputType="none"
+            android:gravity="center_horizontal"
+            android:minWidth="50dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/scheduleview_start_end_layout"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal" >
+
+        <com.felixware.nicknote.views.DayView
+            android:id="@+id/textview_day_sun"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:minHeight="40dp"
+            android:text="@string/schedule_sun" />
+
+            <com.felixware.nicknote.views.DayView
+                android:id="@+id/textview_day_mon"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:minHeight="40dp"
+                android:text="@string/schedule_mon" />
+
+            <com.felixware.nicknote.views.DayView
+                android:id="@+id/textview_day_tue"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:minHeight="40dp"
+                android:text="@string/schedule_tue" />
+
+            <com.felixware.nicknote.views.DayView
+                android:id="@+id/textview_day_wed"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:minHeight="40dp"
+                android:text="@string/schedule_wed" />
+
+            <com.felixware.nicknote.views.DayView
+                android:id="@+id/textview_day_thu"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:minHeight="40dp"
+                android:text="@string/schedule_thu" />
+
+            <com.felixware.nicknote.views.DayView
+                android:id="@+id/textview_day_fri"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:minHeight="40dp"
+                android:text="@string/schedule_fri" />
+
+            <com.felixware.nicknote.views.DayView
+                android:id="@+id/textview_day_sat"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:minHeight="40dp"
+                android:text="@string/schedule_sat" />
+    </LinearLayout>
+
+</RelativeLayout>
