@@ -13,6 +13,7 @@ public class Preferences {
 	private static final String KEY_SCHEDULE_END_HOURS = "prefScheduleEndHours";
 	private static final String KEY_SCHEDULE_END_MINUTES = "prefScheduleEndMinutes";
 	private static final String KEY_SCHEDULE_DAYS = "prefScheduleDays";
+	private static final String KEY_DETAILED_MESSAGES = "prefDetailedMessages";
 
 	public static void setUsername(Context context, String username) {
 		saveString(context, KEY_USERNAME, username);
@@ -78,6 +79,14 @@ public class Preferences {
 		return Utility.deserializeDays(getString(context, KEY_SCHEDULE_DAYS, null));
 	}
 
+	public static void setDetailedMessages(Context context, boolean detailedMessages) {
+		saveBoolean(context, KEY_DETAILED_MESSAGES, detailedMessages);
+	}
+
+	public static boolean getDetailedMessages(Context context) {
+		return getBoolean(context, KEY_DETAILED_MESSAGES, false);
+	}
+
 	private static void saveString(Context context, String key, String data) {
 		SharedPreferences prefs = context.getSharedPreferences(NICK_PREFERENCE, Context.MODE_PRIVATE);
 		SharedPreferences.Editor editor = prefs.edit();
@@ -100,6 +109,18 @@ public class Preferences {
 	private static int getInt(Context context, String key, int defaultValue) {
 		SharedPreferences prefs = context.getSharedPreferences(NICK_PREFERENCE, Context.MODE_PRIVATE);
 		return prefs.getInt(key, defaultValue);
+	}
+
+	private static void saveBoolean(Context context, String key, boolean data) {
+		SharedPreferences prefs = context.getSharedPreferences(NICK_PREFERENCE, Context.MODE_PRIVATE);
+		SharedPreferences.Editor editor = prefs.edit();
+		editor.putBoolean(key, data);
+		editor.commit();
+	}
+
+	private static boolean getBoolean(Context context, String key, boolean defaultValue) {
+		SharedPreferences prefs = context.getSharedPreferences(NICK_PREFERENCE, Context.MODE_PRIVATE);
+		return prefs.getBoolean(key, defaultValue);
 	}
 
 }

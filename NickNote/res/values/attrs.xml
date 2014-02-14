@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-     <declare-styleable name="SettingTextView">
-        <attr name="nameText" format="string" />
-        <attr name="hintText" format="string" />
-        <attr name="isPassword" format="boolean" />
+     <declare-styleable name="nicknoteattrs">
+        <attr name="name_text" format="string" />
+        <attr name="label_text" format="string" />
+        <attr name="hint_text" format="string" />
+        <attr name="is_password" format="boolean" />
     </declare-styleable>
     
 </resources>
