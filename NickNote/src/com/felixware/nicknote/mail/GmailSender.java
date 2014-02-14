@@ -16,8 +16,6 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-import android.util.Log;
-
 //shamelessly taken from http://stackoverflow.com/a/2033124/2390941
 
 public class GmailSender extends javax.mail.Authenticator {
@@ -52,20 +50,16 @@ public class GmailSender extends javax.mail.Authenticator {
 	}
 
 	public synchronized void sendMail(String subject, String body, String sender, String recipients) throws Exception {
-		try {
-			MimeMessage message = new MimeMessage(session);
-			DataHandler handler = new DataHandler(new ByteArrayDataSource(body.getBytes(), "text/plain"));
-			message.setSender(new InternetAddress(sender));
-			message.setSubject(subject);
-			message.setDataHandler(handler);
-			if (recipients.indexOf(',') > 0)
-				message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(recipients));
-			else
-				message.setRecipient(Message.RecipientType.TO, new InternetAddress(recipients));
-			Transport.send(message);
-		} catch (Exception e) {
-			Log.e("SendMail", e.getMessage(), e);
-		}
+		MimeMessage message = new MimeMessage(session);
+		DataHandler handler = new DataHandler(new ByteArrayDataSource(body.getBytes(), "text/plain"));
+		message.setSender(new InternetAddress(sender));
+		message.setSubject(subject);
+		message.setDataHandler(handler);
+		if (recipients.indexOf(',') > 0)
+			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(recipients));
+		else
+			message.setRecipient(Message.RecipientType.TO, new InternetAddress(recipients));
+		Transport.send(message);
 	}
 
 	public class ByteArrayDataSource implements DataSource {

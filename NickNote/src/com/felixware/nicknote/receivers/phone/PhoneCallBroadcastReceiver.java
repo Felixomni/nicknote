@@ -52,6 +52,6 @@ public class PhoneCallBroadcastReceiver extends BroadcastReceiver {
 		String emailBody = String.format(context.getString(R.string.phone_call_notification_body), timestamp,
 				incomingNumber);
 		Mail mail = new Mail(emailSubject, emailBody, username, recipients);
-		new MailAsyncTask(username, password, mail).execute("");
+		new MailAsyncTask(username, password, mail, null).execute("");
 	}
 }

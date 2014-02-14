@@ -1,6 +1,8 @@
 package com.felixware.nicknote;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -8,6 +10,7 @@ import android.widget.Toast;
 
 import com.felixware.nicknote.mail.Mail;
 import com.felixware.nicknote.mail.MailAsyncTask;
+import com.felixware.nicknote.mail.MailAsyncTask.MailError;
 import com.felixware.nicknote.utility.Preferences;
 import com.felixware.nicknote.utility.Utility;
 import com.felixware.nicknote.views.ScheduleView;
@@ -19,6 +22,7 @@ import com.felixware.nicknote.views.SettingTextView;
 public class MainActivity extends Activity {
 	private SettingTextView userNameSTV, userPasswordSTV, recipientsSTV;
 	private ScheduleView scheduleSV;
+	private boolean isSendingTestEmail = false;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -86,13 +90,52 @@ public class MainActivity extends Activity {
 		String password = Preferences.getPassword(this);
 		String recipients = Preferences.getRecipients(this);
 
-		if (TextUtils.isEmpty(username) || TextUtils.isEmpty(password) || TextUtils.isEmpty(recipients)) {
-			Toast.makeText(this, getString(R.string.setting_error_fields), Toast.LENGTH_SHORT).show();
-		} else {
-			Mail mail = new Mail(getString(R.string.test_email_subject), getString(R.string.test_email_body), username,
-					recipients);
-			new MailAsyncTask(username, password, mail).execute("");
+		if (!isSendingTestEmail) {
+			if (TextUtils.isEmpty(username) || TextUtils.isEmpty(password) || TextUtils.isEmpty(recipients)) {
+				Toast.makeText(this, getString(R.string.setting_error_fields), Toast.LENGTH_SHORT).show();
+			} else {
+				isSendingTestEmail = true;
+				Mail mail = new Mail(getString(R.string.test_email_subject), getString(R.string.test_email_body),
+						username, recipients);
+				new MailAsyncTask(username, password, mail, new MailAsyncTask.MailTaskCallback() {
+
+					@Override
+					public void onSuccess() {
+						isSendingTestEmail = false;
+						Toast.makeText(MainActivity.this, R.string.test_email_success, Toast.LENGTH_SHORT).show();
+					}
+
+					@Override
+					public void onFailure(MailError error) {
+						isSendingTestEmail = false;
+						createErrorDialog(error);
+					}
+
+				}).execute("");
+			}
 		}
 	}
 
+	public void createErrorDialog(MailError error) {
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		String message;
+		switch (error) {
+		case AUTHENTICATION:
+			message = getResources().getString(R.string.mail_error_authentication);
+			break;
+		case CONNECTION:
+			message = getResources().getString(R.string.mail_error_no_connection);
+			break;
+		default:
+			message = getResources().getString(R.string.mail_error_other);
+			break;
+		}
+		builder.setTitle(getResources().getString(R.string.test_email_error)).setMessage(message)
+				.setNegativeButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						dialog.dismiss();
+					}
+				}).setCancelable(false).create().show();
+	}
 }
