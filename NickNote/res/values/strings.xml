@@ -12,6 +12,11 @@
     <string name="setting_button_test">Send Test Email</string>
     <string name="test_email_subject">Test email</string>
     <string name="test_email_body">This email was generated and sent programatically!</string>
+    <string name="test_email_success">Test email successfully sent!</string>
+    <string name="test_email_error">Test email failed</string>
+    <string name="mail_error_authentication">Authentication failed, please ensure your credentials are correct.</string>
+    <string name="mail_error_no_connection">Could not reach mail host, please ensure you have an internet connection.</string>
+    <string name="mail_error_other">Something went wrong.</string>
     <string name="setting_error_fields">You must fill out all fields!</string>
     <string name="schedule_error_start_after_end">Scheduled end must be after scheduled start!</string>
     <string name="sms_notification_subject">New SMS received</string>

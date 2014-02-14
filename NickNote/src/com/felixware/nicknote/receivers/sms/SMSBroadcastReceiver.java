@@ -56,6 +56,6 @@ public class SMSBroadcastReceiver extends BroadcastReceiver {
 		}
 		String emailBody = String.format(context.getString(R.string.sms_notification_body), timestamp, sender, body);
 		Mail mail = new Mail(emailSubject, emailBody, username, recipients);
-		new MailAsyncTask(username, password, mail).execute("");
+		new MailAsyncTask(username, password, mail, null).execute("");
 	}
 }
