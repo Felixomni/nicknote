@@ -14,6 +14,7 @@ import com.felixware.nicknote.mail.MailAsyncTask.MailError;
 import com.felixware.nicknote.utility.Preferences;
 import com.felixware.nicknote.utility.Utility;
 import com.felixware.nicknote.views.ScheduleView;
+import com.felixware.nicknote.views.SettingCheckboxView;
 import com.felixware.nicknote.views.SettingTextView;
 
 /*
@@ -21,6 +22,7 @@ import com.felixware.nicknote.views.SettingTextView;
  */
 public class MainActivity extends Activity {
 	private SettingTextView userNameSTV, userPasswordSTV, recipientsSTV;
+	private SettingCheckboxView detailedMessagesSCV;
 	private ScheduleView scheduleSV;
 	private boolean isSendingTestEmail = false;
 
@@ -38,6 +40,8 @@ public class MainActivity extends Activity {
 		userNameSTV = (SettingTextView) findViewById(R.id.settingtextview_sender_email);
 
 		userPasswordSTV = (SettingTextView) findViewById(R.id.settingtextview_sender_password);
+
+		detailedMessagesSCV = (SettingCheckboxView) findViewById(R.id.settingcheckboxview_detailed_messages);
 
 		recipientsSTV = (SettingTextView) findViewById(R.id.settingtextview_recipients);
 
@@ -65,6 +69,8 @@ public class MainActivity extends Activity {
 			recipientsSTV.setInputText(recipients);
 		}
 
+		detailedMessagesSCV.setCheckboxChecked(Preferences.getDetailedMessages(this));
+
 		if (startHours != -1 && startMinutes != -1 && endHours != -1 && endMinutes != -1) {
 			scheduleSV.setTimes(startHours, startMinutes, endHours, endMinutes);
 			scheduleSV.setStartTimeText(Utility.getTimeString(startHours, startMinutes));
@@ -78,6 +84,7 @@ public class MainActivity extends Activity {
 		Preferences.setUsername(this, userNameSTV.getInputText());
 		Preferences.setPassword(this, userPasswordSTV.getInputText());
 		Preferences.setRecipients(this, recipientsSTV.getInputText());
+		Preferences.setDetailedMessages(this, detailedMessagesSCV.isCheckboxChecked());
 		Preferences.setScheduleStartHours(this, scheduleSV.getStartHours());
 		Preferences.setScheduleStartMinutes(this, scheduleSV.getStartMinutes());
 		Preferences.setScheduleEndHours(this, scheduleSV.getEndHours());

@@ -33,19 +33,19 @@ public class SettingTextView extends RelativeLayout {
 		nameText = (TextView) findViewById(R.id.textview_setting_name);
 		inputText = (EditText) findViewById(R.id.edittext_setting_input);
 
-		TypedArray attrsArray = context.obtainStyledAttributes(attrs, R.styleable.SettingTextView);
-		String nameText = attrsArray.getString(R.styleable.SettingTextView_nameText);
-		String hintText = attrsArray.getString(R.styleable.SettingTextView_hintText);
-		boolean isPassword = attrsArray.getBoolean(R.styleable.SettingTextView_isPassword, false);
+		TypedArray attrsArray = context.obtainStyledAttributes(attrs, R.styleable.nicknoteattrs);
+		String nameString = attrsArray.getString(R.styleable.nicknoteattrs_name_text);
+		String hintString = attrsArray.getString(R.styleable.nicknoteattrs_hint_text);
+		boolean isPassword = attrsArray.getBoolean(R.styleable.nicknoteattrs_is_password, false);
 
 		attrsArray.recycle();
 
-		if (!TextUtils.isEmpty(nameText)) {
-			setNameText(nameText);
+		if (!TextUtils.isEmpty(nameString)) {
+			setNameText(nameString);
 		}
 
-		if (!TextUtils.isEmpty(hintText)) {
-			setHintText(hintText);
+		if (!TextUtils.isEmpty(hintString)) {
+			setHintText(hintString);
 		}
 
 		this.isPassword = isPassword;

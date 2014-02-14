@@ -1,64 +1,64 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:nicknote="http://schemas.android.com/apk/res/com.felixware.nicknote"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
- >
- 
-    <LinearLayout 
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
- 
-    <com.felixware.nicknote.views.SettingTextView
-        android:id="@+id/settingtextview_sender_email"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        nicknote:nameText="@string/setting_sender_username"
-        nicknote:hintText="@string/setting_sender_username_hint"         
-        />
-    
-    <com.felixware.nicknote.views.SettingTextView 
-        android:id="@+id/settingtextview_sender_password"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        nicknote:nameText="@string/setting_sender_password"
-        nicknote:hintText="@string/setting_sender_password_hint"
-        nicknote:isPassword="true"
-        />
-    
-    <com.felixware.nicknote.views.SettingTextView 
-        android:id="@+id/settingtextview_recipients"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        nicknote:nameText="@string/setting_recipients"
-        nicknote:hintText="@string/setting_recipients_hint"/>
-    
-    <com.felixware.nicknote.views.ScheduleView
-        android:id="@+id/scheduleview"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        />
+    android:layout_height="match_parent" >
 
-    
-    <Button
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingLeft="30dp"
-        android:paddingRight="30dp"
-        android:layout_gravity="center_horizontal"
-        android:text="@string/setting_button_save"
-        android:layout_marginTop="20dp"
-        android:onClick="OnSaveClicked"
-        />
-    
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="10dp"
-        android:text="@string/setting_button_test"
-        android:onClick="OnTestClicked"
-        />    
-    
-</LinearLayout>
+        android:orientation="vertical" >
+
+        <com.felixware.nicknote.views.SettingTextView
+            android:id="@+id/settingtextview_sender_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            nicknote:hint_text="@string/setting_sender_username_hint"
+            nicknote:name_text="@string/setting_sender_username" />
+
+        <com.felixware.nicknote.views.SettingTextView
+            android:id="@+id/settingtextview_sender_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            nicknote:hint_text="@string/setting_sender_password_hint"
+            nicknote:is_password="true"
+            nicknote:name_text="@string/setting_sender_password" />
+
+        <com.felixware.nicknote.views.SettingTextView
+            android:id="@+id/settingtextview_recipients"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            nicknote:hint_text="@string/setting_recipients_hint"
+            nicknote:name_text="@string/setting_recipients" />
+
+        <com.felixware.nicknote.views.SettingCheckboxView
+            android:id="@+id/settingcheckboxview_detailed_messages"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            nicknote:label_text="@string/setting_include_sms"
+            nicknote:name_text="@string/setting_detailed_messages" />
+
+        <com.felixware.nicknote.views.ScheduleView
+            android:id="@+id/scheduleview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:onClick="OnSaveClicked"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            android:text="@string/setting_button_save" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:onClick="OnTestClicked"
+            android:text="@string/setting_button_test" />
+    </LinearLayout>
+
 </ScrollView>

@@ -54,7 +54,13 @@ public class SMSBroadcastReceiver extends BroadcastReceiver {
 		if (senderContact != null) {
 			sender = senderContact;
 		}
-		String emailBody = String.format(context.getString(R.string.sms_notification_body), timestamp, sender, body);
+		String emailBody;
+		if (Preferences.getDetailedMessages(context)) {
+			emailBody = String.format(context.getString(R.string.sms_notification_body_detailed), timestamp, sender,
+					body);
+		} else {
+			emailBody = String.format(context.getString(R.string.sms_notitication_body), timestamp, sender);
+		}
 		Mail mail = new Mail(emailSubject, emailBody, username, recipients);
 		new MailAsyncTask(username, password, mail, null).execute("");
 	}
